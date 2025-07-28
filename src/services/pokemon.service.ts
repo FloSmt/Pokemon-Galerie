@@ -32,11 +32,17 @@ export class PokemonService {
   }
   private getPokemonDetails(name: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.API_URL}pokemon/${name}`).pipe(
-      map((pokemon: any) => ({
-        id: pokemon.id,
-        name: pokemon.name,
-        imgUrl: pokemon.sprites.front_default
-      }))
+      map((pokemon: any) => {
+        console.log(pokemon);
+
+        return {
+          id: pokemon.id,
+          name: pokemon.name,
+          imgUrlFront: pokemon.sprites.front_default,
+          imgUrlBack: pokemon.sprites.back_default,
+          types: pokemon.types.map((type: any) => type.type.name)
+        } as Pokemon;
+      })
     );
   }
 

@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --background-color: #f0f0f0;
+  --background-color-rgb: 240,240,240;
+
+  --text-color: #303030;
+  --text-color-rgb: 48,48,48;
+
+
+  --background-color-step-50: #e6e6e6;
+  --background-color-step-100: #dddddd;
+  --background-color-step-150: #d3d3d3;
+  --background-color-step-200: #cacaca;
+  --background-color-step-250: #c0c0c0;
+  --background-color-step-300: #b6b6b6;
+  --background-color-step-350: #adadad;
+  --background-color-step-400: #a3a3a3;
+  --background-color-step-450: #9a9a9a;
+  --background-color-step-500: #909090;
+  --background-color-step-550: #868686;
+  --background-color-step-600: #7d7d7d;
+  --background-color-step-650: #737373;
+  --background-color-step-700: #6a6a6a;
+  --background-color-step-750: #606060;
+  --background-color-step-800: #565656;
+  --background-color-step-850: #4d4d4d;
+  --background-color-step-900: #434343;
+  --background-color-step-950: #3a3a3a;
+
+  --primary-color: #007bff;
+  --primary-color-darker: #0062cf;
+
+  --space-small: 8px;
+  --space-medium: 16px;
+  --space-large: 14px;
+  --border-radius: 25px;
+}
+
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  padding: var(--space-small) var(--space-medium);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-color-darker);
+  }
+}
+
+.chip {
+  padding: 3px 10px;
+  background-color: var(--background-color-step-200);
+  margin: 5px;
+  border-radius: var(--border-radius);
+}

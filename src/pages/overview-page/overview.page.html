@@ -1,9 +1,11 @@
-<p>overview-page works!</p>
-@if (pokemonService.isLoading()) {
-  Loading...
-}
-<button (click)="loadPokemon()">Load</button>
+<h1 class="header">Übersicht aller Pokemon</h1>
 
-@for (pokemon of loadedPokemon(); track pokemon.id) {
-  <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
-}
+<div class="card-wrapper">
+  @for (pokemon of loadedPokemon(); track pokemon.id) {
+    <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+  }
+</div>
+
+<div class="footer">
+  <button class="button" (click)="loadPokemon()">Weitere Laden</button>
+</div>

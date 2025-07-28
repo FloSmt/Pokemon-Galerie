@@ -1,8 +1,14 @@
-<div class="card">
+<div class="card" [routerLink]="'/pokemon/' + pokemon().name">
   <div class="image">
-    <img [src]="pokemon().imgUrl" alt="Bild von {{ pokemon().name }}" />
+    <img class="default" [src]="pokemon().imgUrlFront" alt="Bild von {{ pokemon().name }}" />
+    <img class="onHover" [src]="pokemon().imgUrlBack" alt="Bild von {{ pokemon().name }}" />
   </div>
   <div class="body">
     <h2>{{pokemon().name}}</h2>
+    <div class="types">
+      @for (type of pokemon().types; track type) {
+        <span class="chip" [style.background-color]="getTypeColor(type)">{{ type }}</span>
+      }
+    </div>
   </div>
 </div>

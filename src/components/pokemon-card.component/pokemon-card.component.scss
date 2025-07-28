@@ -1,0 +1,55 @@
+.card {
+  background-color: var(--background-color-step-50);
+  padding: var(--space-medium);
+  border-radius: var(--border-radius);
+  transition: 0.2s ease-in-out;
+  min-width: 8rem;
+  min-height: 8rem;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--background-color-step-100);
+
+    .onHover {
+      display: block;
+    }
+
+    .default {
+      display: none;
+    }
+  }
+
+
+  .default {
+    display: block;
+  }
+
+  .onHover {
+    display: none;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .body {
+    text-align: center;
+    h2 {
+      margin: 0;
+    }
+
+    .types {
+      margin-top: var(--space-medium);
+    }
+  }
+}

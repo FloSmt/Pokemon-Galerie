@@ -20,6 +20,9 @@ export class OverviewPage implements OnInit {
 
   ngOnInit() {
     this.loadedPokemon = this.pokemonService.loadedPokemon;
+    if (this.loadedPokemon().length === 0) {
+      this.loadPokemon();
+    }
   }
 
   loadPokemon() {
