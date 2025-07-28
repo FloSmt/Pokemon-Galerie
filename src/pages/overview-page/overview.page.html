@@ -1,0 +1,9 @@
+<p>overview-page works!</p>
+@if (pokemonService.isLoading()) {
+  Loading...
+}
+<button (click)="loadPokemon()">Load</button>
+
+@for (pokemon of loadedPokemon(); track pokemon.id) {
+  <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+}
