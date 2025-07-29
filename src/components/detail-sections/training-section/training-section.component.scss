@@ -4,12 +4,10 @@ h2 {
 
 .metric {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-gap: var(--space-large);
-
-  .label {
-    text-align: right;
-  }
+  margin-bottom: var(--space-small);
+  align-items: center;
 
   .value {
     font-weight: bold;
