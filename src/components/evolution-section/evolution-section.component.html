@@ -1,0 +1,29 @@
+<div class="section">
+  <h2>Evolution</h2>
+  <div class="evolution-chain">
+    @if (evolution !== undefined && evolution.length > 0) {
+      <div class="chain">
+        @for (evolutionStage of evolution!; track evolutionStage.species; let i = $index) {
+          @if (i > 0) {
+            <div class="level-info">
+              <span class="arrow">⟹</span>
+              @if (evolutionStage.min_level) {
+                <span class="value">Level {{ evolutionStage.min_level }}</span>
+              }@else {
+                <span class="value">No Level Requirement</span>
+              }
+            </div>
+          }
+          @if (evolutionStage.pokemon) {
+            <app-pokemon-card class="pokemon-card" [pokemon]="evolutionStage.pokemon"></app-pokemon-card>
+          }
+        }
+      </div>
+    } @else {
+      <div class="no-evolution">
+        <p>No Evolution for this pokemon found.</p>
+      </div>
+    }
+  </div>
+</div>
+

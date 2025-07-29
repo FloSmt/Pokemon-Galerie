@@ -6,6 +6,7 @@ import {StatsSectionComponent} from '../../components/stats-section/stats-sectio
 import {getTypeColor} from '../../utils/enums/pokemonTypeColor';
 import {AdditionalInfosComponent} from '../../components/additional-infos/additional-infos.component';
 import {catchError, of, switchMap} from 'rxjs';
+import {EvolutionSectionComponent} from '../../components/evolution-section/evolution-section.component';
 
 @Component({
   selector: 'app-detail-page',
@@ -13,6 +14,7 @@ import {catchError, of, switchMap} from 'rxjs';
     RouterLink,
     StatsSectionComponent,
     AdditionalInfosComponent,
+    EvolutionSectionComponent,
   ],
   templateUrl: './detail.page.html',
   styleUrl: './detail.page.scss'

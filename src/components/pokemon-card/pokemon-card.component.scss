@@ -2,13 +2,17 @@
   background-color: var(--background-color-step-50);
   padding: var(--space-medium);
   border-radius: var(--border-radius);
-  transition: 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   min-width: 8rem;
   min-height: 8rem;
   cursor: pointer;
 
+  &.active-card {
+    background-color: var(--background-color-step-100);
+  }
+
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     background-color: var(--background-color-step-100);
 
     .onHover {
@@ -44,8 +48,14 @@
 
   .body {
     text-align: center;
+
     h2 {
       margin: 0;
+    }
+
+    .order {
+      font-size: 0.8rem;
+      color: var(--background-color-step-650);
     }
 
     .types {

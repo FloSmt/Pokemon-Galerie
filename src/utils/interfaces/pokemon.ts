@@ -3,6 +3,7 @@ import {Ability} from './ability';
 
 export interface Pokemon {
   id: number;
+  order: number;
   name: string;
   sprites: {
     front_default: string;
@@ -14,5 +15,9 @@ export interface Pokemon {
   weight: number;
   stats: PokemonStat[];
   abilities: Ability[];
+  species: {
+    name: string;
+    url: string;
+  }
 
 }
