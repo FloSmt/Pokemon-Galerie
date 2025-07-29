@@ -1,7 +1,7 @@
 import {Component, OnInit, WritableSignal} from '@angular/core';
 import {PokemonService} from '../../services/pokemon.service';
 import {Pokemon} from '../../utils/interfaces/pokemon';
-import {PokemonCardComponent} from '../../components/pokemon-card.component/pokemon-card.component';
+import {PokemonCardComponent} from '../../components/pokemon-card/pokemon-card.component';
 
 @Component({
   selector: 'app-overview-page',

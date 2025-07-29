@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {Pokemon} from '../../utils/interfaces/pokemon';
-import {PokemonTypeColor} from '../../utils/enums/pokemonTypeColor';
+import {getTypeColor } from '../../utils/enums/pokemonTypeColor';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -13,8 +13,5 @@ import {RouterLink} from '@angular/router';
 })
 export class PokemonCardComponent {
   pokemon = input.required<Pokemon>();
-
-  getTypeColor(type: string): string {
-    return PokemonTypeColor[type as keyof typeof PokemonTypeColor] || PokemonTypeColor.normal;
-  }
+  protected readonly getTypeColor = getTypeColor;
 }

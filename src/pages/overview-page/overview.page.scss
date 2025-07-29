@@ -1,15 +1,5 @@
-.header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--space-medium);
-  padding-bottom: var(--space-medium);
-}
-
 .card-wrapper {
   display: flex;
-  padding: var(--space-large);
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;

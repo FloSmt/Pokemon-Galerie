@@ -18,3 +18,7 @@ export enum PokemonTypeColor {
   steel = '#B7B7CE',
   fairy = '#D685AD'
 }
+
+export function getTypeColor(type: string): string {
+  return PokemonTypeColor[type as keyof typeof PokemonTypeColor] || PokemonTypeColor.normal;
+}

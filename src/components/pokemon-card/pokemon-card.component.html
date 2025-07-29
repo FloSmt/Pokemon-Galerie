@@ -1,7 +1,7 @@
 <div class="card" [routerLink]="'/pokemon/' + pokemon().name">
   <div class="image">
-    <img class="default" [src]="pokemon().imgUrlFront" alt="Bild von {{ pokemon().name }}" />
-    <img class="onHover" [src]="pokemon().imgUrlBack" alt="Bild von {{ pokemon().name }}" />
+    <img class="default" [src]="pokemon().sprites.front_default" alt="Bild von {{ pokemon().name }}" />
+    <img class="onHover" [src]="pokemon().sprites.back_default" alt="Bild von {{ pokemon().name }}" />
   </div>
   <div class="body">
     <h2>{{pokemon().name}}</h2>
