@@ -1,5 +1,9 @@
 <div class="content">
-  <h1 class="header">Übersicht aller Pokemon</h1>
+  <div  class="header">
+    <div class="title">
+      <h1>Overview of all Pokemon</h1>
+    </div>
+  </div>
 
   <div class="card-wrapper">
     @for (pokemon of loadedPokemon(); track pokemon.id) {
@@ -8,7 +12,7 @@
   </div>
 
   <div class="footer">
-    <button class="button" (click)="loadPokemon()">Weitere Laden</button>
+    <button class="button" (click)="loadPokemon()">Load more</button>
   </div>
 
 </div>

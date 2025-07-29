@@ -23,7 +23,12 @@ export class DetailPage implements OnInit{
   isLoading = signal(false);
 
   constructor(private activatedRoute: ActivatedRoute, public pokemonService: PokemonService) {}
+
     ngOnInit(): void {
+      this.getSpecificPokemonFromUrl();
+    }
+
+    getSpecificPokemonFromUrl() {
       this.isLoading.set(true);
       this.activatedRoute.paramMap.pipe(
         switchMap(params => {
