@@ -1,5 +1,6 @@
 import {Component, input} from '@angular/core';
 import {PokemonStat} from '../../utils/interfaces/pokemonStat';
+import {Pokemon} from '../../utils/interfaces/pokemon';
 
 @Component({
   selector: 'app-stats-section',
@@ -8,7 +9,7 @@ import {PokemonStat} from '../../utils/interfaces/pokemonStat';
   styleUrl: './stats-section.component.scss'
 })
 export class StatsSectionComponent {
-  pokemonStats = input.required<PokemonStat[]>();
+  pokemon = input.required<Pokemon>();
 
   getBarColor(stat: PokemonStat): string {
     const baseStat = stat.base_stat;

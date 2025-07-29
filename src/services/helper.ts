@@ -18,6 +18,11 @@ export function mapApiResponseToPokemon(response: any): Pokemon {
         base_stat: statInfo.base_stat,
         effort: statInfo.effort
     })),
+    abilities: response.abilities.map((abilityInfo: any) => ({
+      id: abilityInfo.id,
+      name: abilityInfo.ability.name,
+      is_hidden: abilityInfo.is_hidden,
+    }))
   };
   console.log('Mapped Pokemon:', pokemon);
   return pokemon;

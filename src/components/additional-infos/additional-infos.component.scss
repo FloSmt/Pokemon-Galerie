@@ -17,6 +17,10 @@
     width: 100%;
   }
 
+  .information {
+    width: 100%;
+  }
+
   .metrics {
     width: 100%;
     display: flex;
@@ -39,6 +43,33 @@
       .value {
         font-weight: bold;
       }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .section {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+
+    .image {
+      grid-column: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .information {
+      grid-column: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .divider {
+      display: none;
     }
   }
 }

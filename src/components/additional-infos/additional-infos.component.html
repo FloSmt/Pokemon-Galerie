@@ -1,21 +1,23 @@
 <div class="section">
-  <div>
+  <div class="image">
     <img [src]="pokemon().sprites.artwork" alt="">
   </div>
-  <div class="types">
-    @for (type of pokemon().types; track type) {
-      <span class="chip" [style.background-color]="getTypeColor(type)">{{ type }}</span>
-    }
-  </div>
-  <div class="divider"></div>
-  <div class="metrics">
-    <div class="metric">
-      <span class="label">Height</span>
-      <span class="value">{{ pokemon().height / 10 }} m</span>
+  <div class="information">
+    <div class="types">
+      @for (type of pokemon().types; track type) {
+        <span class="chip" [style.background-color]="getTypeColor(type)">{{ type }}</span>
+      }
     </div>
-    <div class="metric">
-      <span class="label">Weight</span>
-      <span class="value">{{ pokemon().weight / 10 }} kg</span>
+    <div class="divider"></div>
+    <div class="metrics">
+      <div class="metric">
+        <span class="label">Height</span>
+        <span class="value">{{ pokemon().height / 10 }} m</span>
+      </div>
+      <div class="metric">
+        <span class="label">Weight</span>
+        <span class="value">{{ pokemon().weight / 10 }} kg</span>
+      </div>
     </div>
   </div>
 </div>

@@ -1,15 +1,31 @@
 <div class="section">
-  <h2>Stats</h2>
-  <div class="stats">
-    @for (stat of pokemonStats(); track stat.name) {
-      <div class="stat">
-        <span class="name">{{ stat.name }}</span>
-        <div class="bar">
-          <div class="fill" [style.background-color]="getBarColor(stat)" [style.width]="stat.base_stat + '%'"></div>
+  <div class="stats-section">
+    <h2>Stats</h2>
+    <div class="stats">
+      @for (stat of pokemon().stats; track stat.name) {
+        <div class="stat">
+          <span class="name">{{ stat.name }}</span>
+          <div class="bar">
+            <div class="fill" [style.background-color]="getBarColor(stat)" [style.width]="stat.base_stat + '%'"></div>
+          </div>
+          <span>{{stat.base_stat}}</span>
         </div>
-        <span>{{stat.base_stat}}</span>
-      </div>
-      <div class="divider"></div>
-    }
+        <div class="divider"></div>
+      }
+    </div>
+  </div>
+  <div class="abilities-section">
+    <h2>Abilities</h2>
+    <ul class="abilities">
+      @for (ability of pokemon().abilities; track ability.name) {
+        <li class="ability">
+          <span class="name">{{ ability.name }}
+            @if (ability.is_hidden) {
+              <span class="hidden">(Hidden)</span>
+            }
+          </span>
+        </li>
+      }
+    </ul>
   </div>
 </div>

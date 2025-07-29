@@ -1,4 +1,5 @@
 import {PokemonStat} from './pokemonStat';
+import {Ability} from './ability';
 
 export interface Pokemon {
   id: number;
@@ -12,5 +13,6 @@ export interface Pokemon {
   height: number;
   weight: number;
   stats: PokemonStat[];
+  abilities: Ability[];
 
 }

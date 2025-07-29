@@ -12,7 +12,7 @@ import {catchError, of, switchMap} from 'rxjs';
   imports: [
     RouterLink,
     StatsSectionComponent,
-    AdditionalInfosComponent
+    AdditionalInfosComponent,
   ],
   templateUrl: './detail.page.html',
   styleUrl: './detail.page.scss'
