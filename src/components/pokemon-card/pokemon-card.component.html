@@ -5,7 +5,7 @@
   </div>
   <div class="body">
     <h2>{{pokemon().name}}</h2>
-    <span class="order">#{{getPokemonOrder()}}</span>
+    <span class="order sub-text">#{{getPokemonOrder()}}</span>
     <div class="types">
       @for (type of pokemon().types; track type) {
         <span class="chip" [style.background-color]="getTypeColor(type)">{{ type }}</span>

@@ -9,6 +9,14 @@
     object-fit: contain;
   }
 
+  .genera-info {
+    width: 100%;
+    text-align: center;
+     h2 {
+       margin-bottom: 0;
+     }
+  }
+
   .types {
     display: flex;
     padding: var(--space-small) 0;

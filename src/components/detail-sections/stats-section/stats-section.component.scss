@@ -1,4 +1,17 @@
-.stats-section {
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.group {
+  padding-top: var(--space-large);
+}
+
+.stats-group {
+  grid-column-start: 1;
+  grid-column-end: span 3;
+  padding-top: 0;
+
   .stat {
     display: grid;
     grid-template-columns: 0.8fr 1.5fr 0.2fr;
@@ -28,11 +41,9 @@
   }
 }
 
-.abilities-section {
-  padding-top: var(--space-large);
-
-  .hidden {
-    color: var(--background-color-step-600);
-    font-size: 0.8rem;
+.abilities-group {
+  h2 {
+    text-align: center;
   }
 }
+

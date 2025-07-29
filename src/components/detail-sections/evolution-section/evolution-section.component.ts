@@ -1,9 +1,9 @@
 import {Component, input, OnInit} from '@angular/core';
-import {PokemonService} from '../../services/pokemon.service';
-import {Pokemon} from '../../utils/interfaces/pokemon';
-import {PokemonEvolution} from '../../utils/interfaces/pokemonEvolution';
+import {PokemonService} from '../../../services/pokemon.service';
+import {Pokemon} from '../../../utils/interfaces/pokemon';
+import {PokemonEvolution} from '../../../utils/interfaces/pokemonEvolution';
 import {RouterLink} from '@angular/router';
-import {PokemonCardComponent} from '../pokemon-card/pokemon-card.component';
+import {PokemonCardComponent} from '../../pokemon-card/pokemon-card.component';
 
 @Component({
   selector: 'app-evolution-section',

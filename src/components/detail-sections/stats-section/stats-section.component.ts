@@ -1,6 +1,7 @@
 import {Component, input} from '@angular/core';
-import {PokemonStat} from '../../utils/interfaces/pokemonStat';
-import {Pokemon} from '../../utils/interfaces/pokemon';
+import {PokemonStat} from '../../../utils/interfaces/pokemonStat';
+import {Pokemon} from '../../../utils/interfaces/pokemon';
+import {PokemonSpecies} from '../../../utils/interfaces/pokemonSpecies';
 
 @Component({
   selector: 'app-stats-section',

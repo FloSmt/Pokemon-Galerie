@@ -1,6 +1,6 @@
-@if (pokemon == undefined && isLoading()) {
+@if ((pokemon === undefined || pokemonSpeciesDetails === undefined) && isLoading()) {
   <p>Loading..</p>
-} @else if (pokemon == undefined && !isLoading()) {
+} @else if (pokemon === undefined && pokemonSpeciesDetails === undefined && !isLoading()) {
   <div class="content">
     <div class="header">
       <h1>Pokemon not found</h1>
@@ -20,9 +20,16 @@
       </div>
     </div>
     <div class="information-tiles">
-      <app-stats-section id="stats" [pokemon]="pokemon!"></app-stats-section>
-      <app-additional-infos id="additional-information" [pokemon]="pokemon!"></app-additional-infos>
-      <app-evolution-section id="evolution" [pokemon]="pokemon!"></app-evolution-section>
+      <div class="middle">
+        <app-stats-section id="stats" [pokemon]="pokemon!"></app-stats-section>
+        <app-evolution-section id="evolution" [pokemon]="pokemon!"></app-evolution-section>
+        <app-breeding-section id="breeding" [pokemonSpeciesDetails]="pokemonSpeciesDetails!"></app-breeding-section>
+        <app-abilities-section id="abilities" [pokemon]="pokemon!"></app-abilities-section>
+        <app-training-section id="training" [pokemon]="pokemon!" [pokemonSpeciesDetails]="pokemonSpeciesDetails!"></app-training-section>
+      </div>
+      <div class="side">
+        <app-additional-infos id="additional-information" [pokemon]="pokemon!" [pokemonSpeciesDetails]="pokemonSpeciesDetails!"></app-additional-infos>
+      </div>
     </div>
   </div>
 }

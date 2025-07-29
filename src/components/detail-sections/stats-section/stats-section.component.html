@@ -1,5 +1,5 @@
 <div class="section">
-  <div class="stats-section">
+  <div class="stats-group group">
     <h2>Stats</h2>
     <div class="stats">
       @for (stat of pokemon().stats; track stat.name) {
@@ -13,19 +13,5 @@
         <div class="divider"></div>
       }
     </div>
-  </div>
-  <div class="abilities-section">
-    <h2>Abilities</h2>
-    <ul class="abilities">
-      @for (ability of pokemon().abilities; track ability.name) {
-        <li class="ability">
-          <span class="name">{{ ability.name }}
-            @if (ability.is_hidden) {
-              <span class="hidden">(Hidden)</span>
-            }
-          </span>
-        </li>
-      }
-    </ul>
   </div>
 </div>

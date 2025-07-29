@@ -1,11 +1,13 @@
 import {Pokemon} from '../utils/interfaces/pokemon';
 import {PokemonEvolution} from '../utils/interfaces/pokemonEvolution';
+import {PokemonSpecies} from '../utils/interfaces/pokemonSpecies';
 
 export function mapApiResponseToPokemon(response: any): Pokemon {
   const pokemon: Pokemon = {
     id: response.id,
     name: response.name,
     order: response.order,
+    base_experience: response.base_experience,
     sprites: {
       front_default: response.sprites.front_default,
       back_default: response.sprites.back_default,
@@ -36,7 +38,7 @@ export function mapApiResponseToEvolutionChain(response: any): PokemonEvolution[
   const evolutions: PokemonEvolution[] = [];
   function traverse(chainNode: any) {
     evolutions.push({
-      species: chainNode.species.name,
+      name: chainNode.species.name,
       min_level: chainNode.evolution_details?.[0]?.min_level || null,
       pokemon: null
     });
@@ -44,4 +46,17 @@ export function mapApiResponseToEvolutionChain(response: any): PokemonEvolution[
   }
   traverse(response.chain);
   return evolutions;
+}
+
+export function mapApiResponeToPokemonSpecies(response: any): PokemonSpecies {
+  return {
+    gender_rate: response.gender_rate,
+    catch_rate: response.capture_rate,
+    base_happiness: response.base_happiness,
+    growth_rate: response.growth_rate.name,
+    egg_groups: response.egg_groups.map((group: any) => group.name),
+    habitat: response.habitat ? response.habitat.name : null,
+    color: response.color.name,
+    genera: response.genera.find((g: any) => g.language.name === 'en')?.genus || '',
+  };
 }

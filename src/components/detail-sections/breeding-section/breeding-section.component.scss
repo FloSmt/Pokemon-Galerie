@@ -1,0 +1,24 @@
+.metric {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--space-large);
+  margin-bottom: var(--space-small);
+}
+
+.gender-metric {
+
+  .male {
+    color: lightskyblue;
+  }
+
+  .female {
+    color: hotpink;
+  }
+
+  .value {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

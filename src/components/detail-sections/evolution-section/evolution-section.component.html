@@ -3,14 +3,14 @@
   <div class="evolution-chain">
     @if (evolution !== undefined && evolution.length > 0) {
       <div class="chain">
-        @for (evolutionStage of evolution!; track evolutionStage.species; let i = $index) {
+        @for (evolutionStage of evolution!; track evolutionStage.name; let i = $index) {
           @if (i > 0) {
             <div class="level-info">
               <span class="arrow">⟹</span>
               @if (evolutionStage.min_level) {
-                <span class="value">Level {{ evolutionStage.min_level }}</span>
+                <span class="value sub-text">Level {{ evolutionStage.min_level }}</span>
               }@else {
-                <span class="value">No Level Requirement</span>
+                <span class="value sub-text">No Level Requirement</span>
               }
             </div>
           }

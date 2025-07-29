@@ -3,8 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {ListResult} from '../utils/interfaces/listResult';
 import {Pokemon} from '../utils/interfaces/pokemon';
 import {forkJoin, map, Observable, of, switchMap, tap} from 'rxjs';
-import {mapApiResponseToEvolutionChain, mapApiResponseToPokemon} from './helper';
+import {mapApiResponeToPokemonSpecies, mapApiResponseToEvolutionChain, mapApiResponseToPokemon} from './helper';
 import {PokemonEvolution} from '../utils/interfaces/pokemonEvolution';
+import {PokemonSpecies} from '../utils/interfaces/pokemonSpecies';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,16 @@ export class PokemonService {
     }
   }
 
+  getSpeciesDetails(pokemon: Pokemon): Observable<PokemonSpecies> {
+    if (pokemon.species.details) {
+      return of(pokemon.species.details);
+    }else {
+      return this.http.get<PokemonSpecies>(pokemon.species.url).pipe(
+        map((speciesData: any) => mapApiResponeToPokemonSpecies(speciesData))
+      );
+    }
+  }
+
   getEvolutionChain(pokemon: Pokemon): Observable<PokemonEvolution[]> {
     return this.http.get<any>(pokemon.species?.url).pipe(
       map((speciesData: any) => speciesData.evolution_chain.url),
@@ -63,7 +74,7 @@ export class PokemonService {
       map((evolutionChainData: any) => {
         const evolutionsChain = mapApiResponseToEvolutionChain(evolutionChainData);
         evolutionsChain.forEach((evolution: PokemonEvolution) => {
-          this.getPokemonByName(evolution.species).subscribe((pokemon) => {
+          this.getPokemonByName(evolution.name).subscribe((pokemon) => {
             evolution.pokemon = pokemon;
           })
         });
@@ -77,7 +88,6 @@ export class PokemonService {
   private loadPokemonDetails(nameOrId: string | number): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.API_URL}pokemon/${nameOrId}`).pipe(
       map((pokemonData: any) => {
-        console.log(pokemonData);
         const pokemon = mapApiResponseToPokemon(pokemonData);
         this.addNewPokemon([pokemon]);
         return pokemon;
