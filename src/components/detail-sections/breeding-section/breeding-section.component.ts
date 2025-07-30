@@ -5,6 +5,7 @@ import {PokemonSpecies} from '../../../utils/interfaces';
   selector: 'app-breeding-section',
   imports: [],
   templateUrl: './breeding-section.component.html',
+  standalone: true,
   styleUrl: './breeding-section.component.scss'
 })
 export class BreedingSectionComponent {

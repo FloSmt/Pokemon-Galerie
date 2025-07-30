@@ -1,12 +1,11 @@
 import {Component, input} from '@angular/core';
-import {PokemonStat} from '../../../utils/interfaces/pokemonStat';
-import {Pokemon} from '../../../utils/interfaces/pokemon';
-import {PokemonSpecies} from '../../../utils/interfaces/pokemonSpecies';
+import {Pokemon, PokemonStat} from '../../../utils/interfaces';
 
 @Component({
   selector: 'app-stats-section',
   imports: [],
   templateUrl: './stats-section.component.html',
+  standalone: true,
   styleUrl: './stats-section.component.scss'
 })
 export class StatsSectionComponent {
@@ -20,7 +19,7 @@ export class StatsSectionComponent {
       return 'darkorange';
     } else if (baseStat < 75) {
       return 'orange';
-    }else if (baseStat < 85) {
+    } else if (baseStat < 85) {
       return 'lightgreen';
     } else if (baseStat <= 100) {
       return 'green';

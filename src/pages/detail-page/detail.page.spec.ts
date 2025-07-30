@@ -1,16 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DetailPage } from './detail.page';
+import {DetailPage} from './detail.page';
 
 describe('DetailPage', () => {
   let component: DetailPage;
   let fixture: ComponentFixture<DetailPage>;
+  const pokemonServiceSpy = jasmine.createSpy('PokemonService');
+  const activatedRouteSpy = jasmine.createSpy('ActivatedRoute');
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailPage]
+      imports: [DetailPage],
+      providers: [
+        {provide: 'PokemonService', useValue: pokemonServiceSpy},
+        {provide: 'ActivatedRoute', useValue: activatedRouteSpy}
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DetailPage);
     component = fixture.componentInstance;

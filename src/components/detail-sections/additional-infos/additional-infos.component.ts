@@ -6,6 +6,7 @@ import {Pokemon, PokemonSpecies} from '../../../utils/interfaces';
   selector: 'app-additional-infos',
   imports: [],
   templateUrl: './additional-infos.component.html',
+  standalone: true,
   styleUrl: './additional-infos.component.scss'
 })
 export class AdditionalInfosComponent {

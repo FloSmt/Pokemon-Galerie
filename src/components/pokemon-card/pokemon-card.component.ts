@@ -10,6 +10,7 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
     RouterLinkActive
   ],
   templateUrl: './pokemon-card.component.html',
+  standalone: true,
   styleUrl: './pokemon-card.component.scss'
 })
 export class PokemonCardComponent {

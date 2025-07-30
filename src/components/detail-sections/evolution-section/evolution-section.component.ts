@@ -9,6 +9,7 @@ import {PokemonCardComponent} from '../../pokemon-card/pokemon-card.component';
     PokemonCardComponent
   ],
   templateUrl: './evolution-section.component.html',
+  standalone: true,
   styleUrl: './evolution-section.component.scss'
 })
 export class EvolutionSectionComponent implements OnInit {

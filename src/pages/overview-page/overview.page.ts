@@ -1,6 +1,6 @@
 import {Component, OnInit, WritableSignal} from '@angular/core';
 import {PokemonService} from '../../services/pokemon.service';
-import {Pokemon} from '../../utils/interfaces/pokemon';
+import {Pokemon} from '../../utils/interfaces';
 import {PokemonCardComponent} from '../../components/pokemon-card/pokemon-card.component';
 
 @Component({
@@ -9,6 +9,7 @@ import {PokemonCardComponent} from '../../components/pokemon-card/pokemon-card.c
     PokemonCardComponent
   ],
   templateUrl: './overview.page.html',
+  standalone: true,
   styleUrl: './overview.page.scss'
 })
 export class OverviewPage implements OnInit {
