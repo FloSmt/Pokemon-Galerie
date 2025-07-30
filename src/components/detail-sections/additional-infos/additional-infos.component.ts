@@ -1,7 +1,6 @@
 import {Component, input} from '@angular/core';
 import {getTypeColor} from '../../../utils/enums/pokemonTypeColor';
-import {Pokemon} from '../../../utils/interfaces/pokemon';
-import {PokemonSpecies} from '../../../utils/interfaces/pokemonSpecies';
+import {Pokemon, PokemonSpecies} from '../../../utils/interfaces';
 
 @Component({
   selector: 'app-additional-infos',

@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
-import {Pokemon} from '../../utils/interfaces/pokemon';
-import {getTypeColor } from '../../utils/enums/pokemonTypeColor';
+import {Pokemon} from '../../utils/interfaces';
+import {getTypeColor} from '../../utils/enums/pokemonTypeColor';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({

@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {PokemonSpecies} from '../../../utils/interfaces/pokemonSpecies';
+import {PokemonSpecies} from '../../../utils/interfaces';
 
 @Component({
   selector: 'app-breeding-section',
@@ -13,7 +13,7 @@ export class BreedingSectionComponent {
   getGenderRate(gender: 'male' | 'female'): string {
     const genderRate = this.pokemonSpeciesDetails().gender_rate / 8;
 
-    return gender === 'female'? genderRate * 100 + '%': (100 - genderRate * 100) + '%';
+    return gender === 'female' ? genderRate * 100 + '%' : (100 - genderRate * 100) + '%';
   }
 
   getEggGroups(): string {

@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {Pokemon} from '../../../utils/interfaces/pokemon';
+import {Pokemon} from '../../../utils/interfaces';
 
 @Component({
   selector: 'app-abilities-section',

@@ -1,11 +1,8 @@
 import {computed, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ListResult} from '../utils/interfaces/listResult';
-import {Pokemon} from '../utils/interfaces/pokemon';
-import {forkJoin, map, Observable, of, switchMap, tap} from 'rxjs';
-import {mapApiResponeToPokemonSpecies, mapApiResponseToEvolutionChain, mapApiResponseToPokemon} from './helper';
-import {PokemonEvolution} from '../utils/interfaces/pokemonEvolution';
-import {PokemonSpecies} from '../utils/interfaces/pokemonSpecies';
+import {ListResult, Pokemon, PokemonEvolution, PokemonSpecies} from '../utils/interfaces';
+import {forkJoin, map, Observable, of, switchMap} from 'rxjs';
+import {MappingService} from './mapping.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +18,8 @@ export class PokemonService {
 
   readonly API_URL = 'https://pokeapi.co/api/v2/';
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public mappingService: MappingService) {
+  }
 
 
   loadMultiplePokemon() {
@@ -44,7 +42,7 @@ export class PokemonService {
     if (pokemon) {
       return of(pokemon);
     } else {
-     return this.loadPokemonDetails(name);
+      return this.loadPokemonDetails(name);
     }
   }
 
@@ -60,19 +58,20 @@ export class PokemonService {
   getSpeciesDetails(pokemon: Pokemon): Observable<PokemonSpecies> {
     if (pokemon.species.details) {
       return of(pokemon.species.details);
-    }else {
+    } else {
+      // TODO: add loaded Species-data to existing pokemon in the list
       return this.http.get<PokemonSpecies>(pokemon.species.url).pipe(
-        map((speciesData: any) => mapApiResponeToPokemonSpecies(speciesData))
+        map((speciesData: any) => this.mappingService.mapApiResponeToPokemonSpecies(speciesData))
       );
     }
   }
 
   getEvolutionChain(pokemon: Pokemon): Observable<PokemonEvolution[]> {
-    return this.http.get<any>(pokemon.species?.url).pipe(
-      map((speciesData: any) => speciesData.evolution_chain.url),
+    return this.getSpeciesDetails(pokemon).pipe(
+      map((speciesData: any) => speciesData.evolution_chain),
       switchMap((evolutionChainUrl: string) => this.http.get<any>(evolutionChainUrl)),
       map((evolutionChainData: any) => {
-        const evolutionsChain = mapApiResponseToEvolutionChain(evolutionChainData);
+        const evolutionsChain = this.mappingService.mapApiResponseToEvolutionChain(evolutionChainData);
         evolutionsChain.forEach((evolution: PokemonEvolution) => {
           this.getPokemonByName(evolution.name).subscribe((pokemon) => {
             evolution.pokemon = pokemon;
@@ -85,17 +84,17 @@ export class PokemonService {
   }
 
 
-  private loadPokemonDetails(nameOrId: string | number): Observable<Pokemon> {
+  loadPokemonDetails(nameOrId: string | number): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.API_URL}pokemon/${nameOrId}`).pipe(
       map((pokemonData: any) => {
-        const pokemon = mapApiResponseToPokemon(pokemonData);
+        const pokemon = this.mappingService.mapApiResponseToPokemon(pokemonData);
         this.addNewPokemon([pokemon]);
         return pokemon;
       })
     );
   }
 
-  private addNewPokemon(pokemon: Pokemon[]) {
+  addNewPokemon(pokemon: Pokemon[]) {
     this.loadedPokemon.update((current) => {
       const existingNames = new Set(current.map(p => p.name));
       const newPokemon = pokemon.filter(p => !existingNames.has(p.name));
