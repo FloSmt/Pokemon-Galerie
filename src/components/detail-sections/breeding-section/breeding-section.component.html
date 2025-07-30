@@ -12,8 +12,12 @@
     <div class="metric gender-metric">
       <span class="label">Gender</span>
       <span class="value">
-          <span class="female">{{getGenderRate('female')}} <span class="sub-text">(Female)</span></span>
-          <span class="male">{{getGenderRate('male')}} <span class="sub-text">(Male)</span></span>
+        @if (pokemonSpeciesDetails().gender_rate !== -1) {
+          <span class="female">{{ getGenderRate('female') }} <span class="sub-text">(Female)</span></span>
+          <span class="male">{{ getGenderRate('male') }} <span class="sub-text">(Male)</span></span>
+        } @else {
+          <span>genderless</span>
+        }
         </span>
     </div>
   </div>
