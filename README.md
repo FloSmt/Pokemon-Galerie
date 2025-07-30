@@ -2,7 +2,15 @@
 
 ## Development server
 
-To start a local development server, run:
+1. Clone the Github-Repo and open it in your Development-Environment.
+
+3. install packages with following command:
+
+```bash
+npm install
+```
+
+2. To start a local development server, run:
 
 ```bash
 ng serve
@@ -27,3 +35,5 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ```bash
 ng test
 ```
+
+(currently not all Tests are working)
