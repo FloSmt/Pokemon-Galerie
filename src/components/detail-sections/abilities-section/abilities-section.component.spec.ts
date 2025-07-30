@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AbilitiesSectionComponent } from './abilities-section.component';
+import {AbilitiesSectionComponent} from './abilities-section.component';
 
 describe('AbilitiesSectionComponent', () => {
   let component: AbilitiesSectionComponent;
@@ -10,10 +10,12 @@ describe('AbilitiesSectionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AbilitiesSectionComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AbilitiesSectionComponent);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('pokemon', {});
     fixture.detectChanges();
   });
 

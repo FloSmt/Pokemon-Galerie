@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EvolutionSectionComponent } from './evolution-section.component';
+import {EvolutionSectionComponent} from './evolution-section.component';
 
 describe('EvolutionSection', () => {
   let component: EvolutionSectionComponent;
@@ -8,12 +8,15 @@ describe('EvolutionSection', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EvolutionSectionComponent]
+      imports: [EvolutionSectionComponent],
+      providers: []
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EvolutionSectionComponent);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('pokemon', {});
     fixture.detectChanges();
   });
 

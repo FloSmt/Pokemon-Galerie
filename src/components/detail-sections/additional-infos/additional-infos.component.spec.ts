@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdditionalInfosComponent } from './additional-infos.component';
+import {AdditionalInfosComponent} from './additional-infos.component';
 
 describe('AdditionalInfosComponent', () => {
   let component: AdditionalInfosComponent;
@@ -10,10 +10,13 @@ describe('AdditionalInfosComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AdditionalInfosComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AdditionalInfosComponent);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('pokemon', {});
+    fixture.componentRef.setInput('pokemonSpeciesDetails', {});
     fixture.detectChanges();
   });
 

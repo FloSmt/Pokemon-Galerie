@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BreedingSectionComponent } from './breeding-section.component';
+import {BreedingSectionComponent} from './breeding-section.component';
 
 describe('BreedingSectionComponent', () => {
   let component: BreedingSectionComponent;
@@ -10,10 +10,12 @@ describe('BreedingSectionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BreedingSectionComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(BreedingSectionComponent);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('pokemonSpeciesDetails', {egg_groups: []});
     fixture.detectChanges();
   });
 
