@@ -1,4 +1,4 @@
-export const ResponseApiPokemonSpeciesMock: any = {
+export const ResponseApiPokemonSpeciesMock = {
   "id": 413,
   "name": "wormadam",
   "order": 441,

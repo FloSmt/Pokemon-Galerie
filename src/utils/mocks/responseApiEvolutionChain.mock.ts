@@ -1,4 +1,4 @@
-export const ResponseApiEvolutionChainMock: any = {
+export const ResponseApiEvolutionChainMock = {
   "id": 7,
   "baby_trigger_item": null,
   "chain": {

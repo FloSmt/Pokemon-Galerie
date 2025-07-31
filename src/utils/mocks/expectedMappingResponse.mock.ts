@@ -1,6 +1,6 @@
-import {Pokemon} from '../interfaces/pokemon';
+import {Pokemon, PokemonEvolution, PokemonSpecies} from '../interfaces';
 
-export const ExpectedMappingResponseForPokemonDetailsMock = {
+export const ExpectedMappingResponseForPokemonDetailsMock: Pokemon = {
   id: 1,
   name: 'bulbasaur',
   order: 1,
@@ -59,10 +59,10 @@ export const ExpectedMappingResponseForPokemonDetailsMock = {
       is_hidden: true
     }
   ]
-} as Pokemon
+}
 
 
-export const ExpectedMappingResponseForEvolutionChainMock = [
+export const ExpectedMappingResponseForEvolutionChainMock: PokemonEvolution[] = [
   {
     name: 'rattata',
     min_level: null,
@@ -76,7 +76,7 @@ export const ExpectedMappingResponseForEvolutionChainMock = [
 ]
 
 
-export const ExpectedMappingResponseForSpeciesMock = {
+export const ExpectedMappingResponseForSpeciesMock: PokemonSpecies = {
   gender_rate: 8,
   evolution_chain: 'evolution-chain-link',
   catch_rate: 45,

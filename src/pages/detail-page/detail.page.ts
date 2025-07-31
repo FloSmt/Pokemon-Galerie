@@ -1,11 +1,11 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {PokemonService} from '../../services/pokemon.service';
 import {Pokemon, PokemonSpecies} from '../../utils/interfaces';
 import {StatsSectionComponent} from '../../components/detail-sections/stats-section/stats-section.component';
 
 import {AdditionalInfosComponent} from '../../components/detail-sections/additional-infos/additional-infos.component';
-import {catchError, of, switchMap} from 'rxjs';
+import {catchError, of, switchMap, tap} from 'rxjs';
 import {
   EvolutionSectionComponent
 } from '../../components/detail-sections/evolution-section/evolution-section.component';
@@ -32,8 +32,8 @@ import {
 })
 export class DetailPage implements OnInit {
 
-  pokemon: Pokemon | undefined = undefined;
-  pokemonSpeciesDetails: PokemonSpecies | undefined = undefined;
+  pokemon: WritableSignal<Pokemon | undefined> = signal(undefined);
+  pokemonSpeciesDetails: WritableSignal<PokemonSpecies | undefined> = signal(undefined);
   isLoading = signal(false);
 
   constructor(private activatedRoute: ActivatedRoute, public pokemonService: PokemonService) {
@@ -59,16 +59,20 @@ export class DetailPage implements OnInit {
           this.isLoading.set(false);
           return of(undefined);
         }
-        this.pokemon = pokemon;
-        return this.pokemonService.getSpeciesDetails(this.pokemon);
+
+        this.pokemon.set(pokemon);
+        return this.pokemonService.getSpeciesDetails(pokemon)
+          .pipe(
+            tap((pokemonSpecies) => {
+              this.pokemonSpeciesDetails.set(pokemonSpecies);
+            })
+          );
       }),
       catchError(() => {
         this.isLoading.set(false);
         return of(undefined);
       })
-    ).subscribe((species) => {
-      this.pokemonSpeciesDetails = species;
-    });
+    ).subscribe();
   }
 }
 

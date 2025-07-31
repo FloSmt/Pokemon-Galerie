@@ -1,15 +1,17 @@
 <div class="section">
   <h2>Evolution</h2>
   <div class="evolution-chain">
-    @if (evolution !== undefined && evolution.length > 0) {
+    @if (evolution()) {
+      @let currentEvolutions = evolution();
+
       <div class="chain">
-        @for (evolutionStage of evolution!; track evolutionStage.name; let i = $index) {
+        @for (evolutionStage of currentEvolutions; track evolutionStage.name; let i = $index) {
           @if (i > 0) {
             <div class="level-info">
               <span class="arrow">⟹</span>
               @if (evolutionStage.min_level) {
                 <span class="value sub-text">Level {{ evolutionStage.min_level }}</span>
-              }@else {
+              } @else {
                 <span class="value sub-text">No Level Requirement</span>
               }
             </div>

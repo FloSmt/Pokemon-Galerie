@@ -1,35 +1,36 @@
-@if ((pokemon === undefined || pokemonSpeciesDetails === undefined) && isLoading()) {
-  <p>Loading..</p>
-} @else if (pokemon === undefined && pokemonSpeciesDetails === undefined && !isLoading()) {
-  <div class="content">
-    <div class="header">
-      <h1>Pokemon not found</h1>
-    </div>
-  </div>
-} @else {
+@if (pokemon() && pokemonSpeciesDetails()) {
+  @let currentPokemon = pokemon()!;
+  @let currentSpecialDetails = pokemonSpeciesDetails()!;
+
   <div class="content">
     <div class="header">
       <div class="button-container">
         <button class="button" [routerLink]="'/'">Back to Overview</button>
       </div>
       <div class="title">
-        <h1>{{pokemon!.name}}</h1>
+        <h1>{{ currentPokemon.name }}</h1>
         <div class="image">
-          <img [src]="pokemon!.sprites.front_default" alt="Bild von {{ pokemon!.name }}" />
+          <img [src]="currentPokemon.sprites.front_default" alt="Bild von {{ currentPokemon.name }}"/>
         </div>
       </div>
     </div>
     <div class="information-tiles">
       <div class="middle">
-        <app-stats-section id="stats" [pokemon]="pokemon!"></app-stats-section>
-        <app-evolution-section id="evolution" [pokemon]="pokemon!"></app-evolution-section>
-        <app-breeding-section id="breeding" [pokemonSpeciesDetails]="pokemonSpeciesDetails!"></app-breeding-section>
-        <app-abilities-section id="abilities" [pokemon]="pokemon!"></app-abilities-section>
-        <app-training-section id="training" [pokemon]="pokemon!" [pokemonSpeciesDetails]="pokemonSpeciesDetails!"></app-training-section>
+        <app-stats-section id="stats" [pokemon]="currentPokemon"></app-stats-section>
+        <app-evolution-section id="evolution" [pokemon]="currentPokemon"></app-evolution-section>
+        <app-breeding-section id="breeding" [pokemonSpeciesDetails]="currentSpecialDetails"></app-breeding-section>
+        <app-abilities-section id="abilities" [pokemon]="currentPokemon"></app-abilities-section>
+        <app-training-section id="training" [pokemon]="currentPokemon"
+                              [pokemonSpeciesDetails]="currentSpecialDetails"></app-training-section>
       </div>
       <div class="side">
-        <app-additional-infos id="additional-information" [pokemon]="pokemon!" [pokemonSpeciesDetails]="pokemonSpeciesDetails!"></app-additional-infos>
+        <app-additional-infos id="additional-information" [pokemon]="currentPokemon"
+                              [pokemonSpeciesDetails]="currentSpecialDetails"></app-additional-infos>
       </div>
     </div>
   </div>
+} @else if (isLoading()) {
+  <p>Loading...</p>
+} @else {
+  <h1>Pokemon not found</h1>
 }

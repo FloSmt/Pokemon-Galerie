@@ -29,6 +29,6 @@ export class OverviewPage implements OnInit {
   }
 
   loadPokemon() {
-    this.pokemonService.loadMultiplePokemon();
+    this.pokemonService.loadMultiplePokemon().subscribe();
   }
 }

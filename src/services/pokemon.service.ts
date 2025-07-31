@@ -1,7 +1,7 @@
 import {computed, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ListResult, Pokemon, PokemonEvolution, PokemonSpecies} from '../utils/interfaces';
-import {forkJoin, map, Observable, of, switchMap} from 'rxjs';
+import {forkJoin, map, Observable, of, switchMap, tap} from 'rxjs';
 import {MappingService} from './mapping.service';
 
 @Injectable({
@@ -22,19 +22,24 @@ export class PokemonService {
   }
 
 
-  loadMultiplePokemon() {
+  loadMultiplePokemon(): Observable<Pokemon[]> {
     this.isLoading.set(true);
-    this.http.get<ListResult>(`${this.API_URL}pokemon?limit=${this.pageSize}&offset=${this.pageOffset()}`)
+    return this.http.get<ListResult>(`${this.API_URL}pokemon?limit=${this.pageSize}&offset=${this.pageOffset()}`)
       .pipe(
-        map(data => data.results.map((pokemon: any) => this.loadPokemonDetails(pokemon.name))),
-      )
-      .subscribe(requests => {
-        forkJoin(requests).subscribe(pokemon => {
-          this.addNewPokemon(pokemon)
+        switchMap(pokemonList => {
+          if (pokemonList.results.length === 0) {
+            return [];
+          }
+
+          const details: Observable<Pokemon>[] = pokemonList.results.map((pokemonResult) => this.loadPokemonDetails(pokemonResult.name));
+          return forkJoin(details);
+        }),
+        tap(pokemon => {
+          this.addNewPokemon(pokemon);
           this.currentPage.set(this.currentPage() + 1);
           this.isLoading.set(false)
-        });
-      });
+        })
+      )
   }
 
   getPokemonByName(name: string): Observable<Pokemon> {
@@ -86,7 +91,7 @@ export class PokemonService {
 
   loadPokemonDetails(nameOrId: string | number): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.API_URL}pokemon/${nameOrId}`).pipe(
-      map((pokemonData: any) => {
+      map((pokemonData) => {
         const pokemon = this.mappingService.mapApiResponseToPokemon(pokemonData);
         this.addNewPokemon([pokemon]);
         return pokemon;
